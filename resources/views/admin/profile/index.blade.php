@@ -50,13 +50,6 @@
         <div class="row mt-sm-4">
           <div class="col-12 col-md-12 col-lg-7">
             <div class="card">
-                @if ($errors->any())
-                    @foreach ($errors as $error)
-                    @php
-
-                    @endphp
-                    @endforeach
-                @endif
               <form action="{{route('admin.password.update')}}" method="POST" class="needs-validation" novalidate=""
                enctype="multipart/form-data">
                 @csrf
