@@ -43,7 +43,7 @@
                                 <button class="common_btn" type="submit">send</button>
                             </form>
                         </div>
-                        <a class="see_btn mt-4" href="login.html">go to login</a>
+                        <a class="see_btn mt-4" href="{{ route('login')}}">go to login</a>
                     </div>
                 </div>
             </div>
