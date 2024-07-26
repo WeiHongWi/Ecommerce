@@ -83,6 +83,6 @@
             toastr.error("{{$error}}")
         @endforeach
     @endif
-</script>
+  </script>
 </body>
 </html>
