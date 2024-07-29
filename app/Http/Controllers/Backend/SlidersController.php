@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\DataTables\SlidersDataTable;
 use App\Http\Controllers\Controller;
 use App\Models\Slider;
 use App\Traits\ImageUploadTrait;
@@ -9,15 +10,16 @@ use Illuminate\Http\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class SliderController extends Controller
+class SlidersController extends Controller
 {
     use ImageUploadTrait;
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(SlidersDataTable $dataTable)
     {
-        return view('admin.slider.index');
+        //return view('admin.slider.index');
+        return $dataTable->render('admin.slider.index');
     }
 
     /**
