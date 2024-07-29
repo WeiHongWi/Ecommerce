@@ -4,12 +4,14 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Slider;
+use App\Traits\ImageUploadTrait;
 use Illuminate\Http\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class SliderController extends Controller
 {
+    use ImageUploadTrait;
     /**
      * Display a listing of the resource.
      */
@@ -40,11 +42,11 @@ class SliderController extends Controller
             'number' => ['required','integer'],
             'status' => ['required'],
         ]);
-        if($request->hasFile($request->banner)){
-
-        }
 
         $slider = new Slider();
+
+        $imagePath = $this->uploadImage($request,'banner','uploads');
+        $slider->banner = $imagePath;
         $slider->type = $request->type;
         $slider->title = $request->title;
         $slider->starting_price = $request->starting_price;
