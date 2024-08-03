@@ -33,10 +33,10 @@ class CategoryDataTable extends DataTable
                 return '<i style="font-size:45px" class="'.$query->icon.'"></i>';
             })
             ->addColumn('status',function($query){
-                $button = '<label class="custom-switch">
-                <input type="radio" name="option" value="2" class="custom-switch-input">
-                <span class="custom-switch-indicator"></span>
-                </label>';
+                $button = '<label class="custom-switch mt-2">
+                        <input type="checkbox" name="custom-switch-checkbox" class="custom-switch-input">
+                        <span class="custom-switch-indicator"></span>
+                      </label>';
                 return $button;
             })
             ->rawColumns(['icon','action','status'])
