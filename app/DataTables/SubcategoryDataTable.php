@@ -24,9 +24,9 @@ class SubcategoryDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             ->addColumn('action', function($query){
-                $editbtn = "<a href='".route('admin.category.edit',$query->id)."'
+                $editbtn = "<a href='".route('admin.subcategory.edit',$query->id)."'
                             class='btn btn-primary'>Edit</a>";
-                $deletebtn = "<a href='".route('admin.category.destroy',$query->id)."'
+                $deletebtn = "<a href='".route('admin.subcategory.destroy',$query->id)."'
                             class='btn btn-danger ml-3 delete-item'>Delete</a>";
                 return $editbtn.$deletebtn;
             })
