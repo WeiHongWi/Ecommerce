@@ -29,4 +29,5 @@ Route::resource('category',CategoryController::class);
 
 
 //Subcategory Route
+Route::put('change-status',[SubcategoryController::class,'changeStatus'])->name('subcategory.change-status');
 Route::resource('subcategory',SubcategoryController::class);

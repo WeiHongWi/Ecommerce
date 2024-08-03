@@ -105,6 +105,10 @@ class SubcategoryController extends Controller
     }
 
     public function changeStatus(Request $request){
+        $subcategory = Subcategory::findOrfail($request->id);
+        $subcategory->status = ($request->isChecked == "false")?"0":"1";
+        $subcategory->save();
 
+        return response(['message' => 'Change status successfully']);
     }
 }

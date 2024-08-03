@@ -72,7 +72,7 @@ class SubcategoryDataTable extends DataTable
                     ->columns($this->getColumns())
                     ->minifiedAjax()
                     //->dom('Bfrtip')
-                    ->orderBy(1)
+                    ->orderBy(0)
                     ->selectStyleSingle()
                     ->buttons([
                         Button::make('excel'),
@@ -93,6 +93,7 @@ class SubcategoryDataTable extends DataTable
             Column::make('id')->width(20),
             Column::make('category')->width(20),
             Column::make('name')->width(20),
+            Column::make('slug')->width(20),
             Column::make('status')->width(20),
             Column::computed('action')
                   ->exportable(false)
