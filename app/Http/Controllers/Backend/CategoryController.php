@@ -105,7 +105,7 @@ class CategoryController extends Controller
     {
 
         $category = Category::findOrFail($request->id);
-        $category->status = ($request->isChecked)?"0":"1";
+        $category->status = ($request->isChecked == "false")?"0":"1";
         $category->save();
 
         return response(['message' => 'Update status succesfully']);
