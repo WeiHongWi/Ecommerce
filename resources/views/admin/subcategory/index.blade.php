@@ -5,18 +5,18 @@
 
         <section class="section">
           <div class="section-header">
-            <h1>Category</h1>
+            <h1>Sub Category</h1>
           </div>
 
           <div class="section-body">
-            <h2 class="section-title">Category</h2>
+            <h2 class="section-title">Sub Category</h2>
             <div class="row">
               <div class="col-12">
                 <div class="card">
                   <div class="card-header">
-                    <h4>All Categories</h4>
+                    <h4>All Sub Categories</h4>
                     <div class="card-header-action">
-                        <a href="{{route('admin.category.create')}}" class="btn btn-primary">Create New</a>
+                        <a href="{{route('admin.subcategory.create')}}" class="btn btn-primary">Create New</a>
                     </div>
                   </div>
                   <div class="card-body">
@@ -29,7 +29,6 @@
         </section>
 
 @endsection
-
 @push('scripts')
     {{ $dataTable->scripts(attributes: ['type' => 'module']) }}
     <script>
