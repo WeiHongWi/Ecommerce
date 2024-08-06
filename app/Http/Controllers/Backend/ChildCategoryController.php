@@ -12,7 +12,7 @@ class ChildCategoryController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.childcategory.index');
     }
 
     /**
