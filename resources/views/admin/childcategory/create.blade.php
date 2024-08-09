@@ -66,7 +66,7 @@
                 let id = $(this).val();
                 $.ajax ({
                     method: 'GET',
-                    url: "{{route('admin.childcategory.getSubacategory')}}",
+                    url: "{{route('admin.childcategory.getSubcategory')}}",
                     data: {
                         id:id
                     },
