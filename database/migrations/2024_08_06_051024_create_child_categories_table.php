@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('child_categories', function (Blueprint $table) {
             $table->id();
+            $table->integer('category_id');
+            $table->integer('subcategory_id');
             $table->string('name');
             $table->string('slug');
             $table->boolean('status');

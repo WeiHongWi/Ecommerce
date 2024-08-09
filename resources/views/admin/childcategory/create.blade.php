@@ -16,7 +16,7 @@
                     <h4>Create Category</h4>
                   </div>
                   <div class="card-body">
-                    <form method="POST" action="{{route('admin.subcategory.store')}}">
+                    <form method="POST" action="{{route('admin.childcategory.store')}}">
                         @csrf
                         <div class="form-group">
                             <div>

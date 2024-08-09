@@ -27,3 +27,31 @@
         </div>
       </section>
 @endsection
+@push('scripts')
+    {{ $dataTable->scripts(attributes: ['type' => 'module']) }}
+    <script>
+        $(document).ready(function(){
+            $('body').on('click','.change-status',function(){
+
+                let isChecked = $(this).is(':checked');
+                let id = $(this).data('id');
+
+                $.ajax({
+                    url: "{{route('admin.childcategory.change-status')}}",
+                    method: 'PUT',
+                    data: {
+                        isChecked:isChecked,
+                        id:id
+                    },
+                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                    success: function(data){
+                        console.log(data);
+                    },
+                    error: function(xhr,status,error){
+                        console.log(error);
+                    }
+                })
+            })
+        })
+    </script>
+@endpush
