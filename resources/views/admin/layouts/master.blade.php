@@ -129,7 +129,9 @@
                                     data.message
                                 );
                             }
-                            window.location.reload();
+                            setTimeout(function() {
+                                window.location.reload();
+                            }, 3000);
                         },
                         error: function(xhr,status,error){
                             console.log(error);

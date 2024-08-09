@@ -5,9 +5,12 @@ namespace App\Http\Controllers\Backend;
 use App\DataTables\SubcategoryDataTable;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\ChildCategory;
 use App\Models\Subcategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use PHPUnit\Framework\Constraint\IsEmpty;
+
 class SubcategoryController extends Controller
 {
     /**
@@ -98,7 +101,11 @@ class SubcategoryController extends Controller
     public function destroy(string $id)
     {
         $subcategory = Subcategory::findOrFail($id);
-
+        $childcategory = ChildCategory::where('subcategory_id',$id)->get();
+        if(!$childcategory->isEmpty()){
+            toastr('There still have child category under this sub category!','error');
+            return response(['status' => 'error' ,'Delete unsuccessfully']);
+        }
         $subcategory->delete();
 
         return response(['status' => 'success' ,'Delete successfully']);

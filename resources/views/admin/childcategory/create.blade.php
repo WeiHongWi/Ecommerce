@@ -72,7 +72,7 @@
                     },
                     success: function(data){
                         console.log(data);
-                        $('.sub-category').append(`<option value="">Select</option>`)
+                        //$('.sub-category').append(`<option value="">Select</option>`)
                         $.each(data,function(i,item){
                             $('.sub-category').append(`<option value="${item.id}">${item.name}</option>`)
                         })
