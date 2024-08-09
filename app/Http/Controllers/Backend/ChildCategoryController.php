@@ -74,9 +74,17 @@ class ChildCategoryController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $categories = Category::all();
+
+        return view('admin.childcategory.edit',compact('categories'));
     }
 
+    public function getChildcategory(Request $request){
+        $sub_id = $request->id;
+        $childcategories = ChildCategory::where('subcategory_id',$sub_id)->get();
+
+        return $childcategories;
+    }
     /**
      * Update the specified resource in storage.
      */
