@@ -16,7 +16,7 @@
                     <h4>Edit Child Category</h4>
                   </div>
                   <div class="card-body">
-                    <form method="POST" action="">
+                    <form method="POST" action="{{route('admin.childcategory.update',$childcategory->id)}}">
                         @csrf
                         @method('PUT')
                         <div class="form-group">
