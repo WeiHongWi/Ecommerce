@@ -25,7 +25,7 @@ Route::post('profile/update/password',[ProfileController::class,'updatePassword'
 Route::resource('slider',SlidersController::class);
 
 //Category Route
-Route::put('change-status',[CategoryController::class,'changeStatus'])->name('category.change-status');
+Route::put('category/change-status',[CategoryController::class,'changeStatus'])->name('category.change-status');
 Route::resource('category',CategoryController::class);
 
 
@@ -34,7 +34,6 @@ Route::put('change-status',[SubcategoryController::class,'changeStatus'])->name(
 Route::resource('subcategory',SubcategoryController::class);
 
 //Childcategory Route
-//Route::put('change-status',[ChildCategoryController::class,'changeStatus'])->name('childcategory.change-status');
 Route::get('get-subcategory',[ChildCategoryController::class,'getSubcategory'])->name('childcategory.getSubcategory');
 Route::get('get-childcategory',[ChildCategoryController::class,'getChildcategory'])->name('childcategory.getChildcategory');
 Route::put('change-status',[ChildcategoryController::class,'changeStatus'])->name('childcategory.change-status');
