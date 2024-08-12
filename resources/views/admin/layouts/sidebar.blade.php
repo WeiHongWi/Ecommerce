@@ -12,11 +12,11 @@
           <a href="{{route('admin.dashboard')}}" class="nav-link"><i class="fas fa-fire"></i><span>Dashboard</span></a>
         </li>
         <li class="menu-header">Starter</li>
-        <li class="dropdown {{ setsidebarActive([
-            'admin.category.*',
-            'admin.subcategory.*',
-            'admin.childcategory.*'
-        ])}}">
+            <li class="dropdown {{ setsidebarActive([
+                'admin.category.*',
+                'admin.subcategory.*',
+                'admin.childcategory.*'
+            ])}}">
             <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Manage Categories</span></a>
             <ul class="dropdown-menu">
               <li class="{{ setsidebarActive(['admin.category.*'])}}">
@@ -26,27 +26,37 @@
               <li class="{{ setsidebarActive(['admin.childcategory.*'])}}">
                 <a class="nav-link" href="{{route('admin.childcategory.index')}}">Child Category</a></li>
             </ul>
-          </li>
-          <li class="dropdown {{ setsidebarActive([
+            </li>
+            <li class="dropdown {{ setsidebarActive([
             'admin.brand.*',
-        ])}}">
-          <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Manage Product</span></a>
-          <ul class="dropdown-menu">
-            <li class="{{ setsidebarActive([
-                'admin.brand.*',
-            ])}}"><a class="nav-link" href="{{route('admin.brand.index')}}">Brand</a></li>
-          </ul>
-        </li>
-        <li class="dropdown {{ setsidebarActive([
-            'admin.slider.*',
-        ])}}">
-          <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Manage Website</span></a>
-          <ul class="dropdown-menu">
-            <li class="{{ setsidebarActive([
+            ])}}">
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Manage Product</span></a>
+                    <ul class="dropdown-menu">
+                    <li class="{{ setsidebarActive([
+                        'admin.brand.*',
+                    ])}}"><a class="nav-link" href="{{route('admin.brand.index')}}">Brand</a></li>
+                    </ul>
+            </li>
+            <li class="dropdown {{ setsidebarActive([
                 'admin.slider.*',
-            ])}}"><a class="nav-link" href="{{route('admin.slider.index')}}">Slider</a></li>
-          </ul>
-        </li>
+            ])}}">
+            <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Manage Website</span></a>
+            <ul class="dropdown-menu">
+                <li class="{{ setsidebarActive([
+                    'admin.slider.*',
+                ])}}"><a class="nav-link" href="{{route('admin.slider.index')}}">Slider</a></li>
+            </ul>
+            </li>
+            <li class="dropdown {{ setsidebarActive([
+                'admin.vendor.*',
+            ])}}">
+              <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Ecommerce</span></a>
+              <ul class="dropdown-menu">
+                <li class="{{ setsidebarActive([
+                    'admin.vendor.*',
+                ])}}"><a class="nav-link" href="{{route('admin.vendor.index')}}">Vendor</a></li>
+              </ul>
+            </li>
         {{--<li class="dropdown">
             <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Layout</span></a>
             <ul class="dropdown-menu">
