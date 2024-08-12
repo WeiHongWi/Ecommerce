@@ -35,6 +35,10 @@
                     <li class="{{ setsidebarActive([
                         'admin.brand.*',
                     ])}}"><a class="nav-link" href="{{route('admin.brand.index')}}">Brand</a></li>
+
+                    <li class="{{ setsidebarActive([
+                        'admin.product.*',
+                    ])}}"><a class="nav-link" href="{{route('admin.product.index')}}">Product</a></li>
                     </ul>
             </li>
             <li class="dropdown {{ setsidebarActive([
