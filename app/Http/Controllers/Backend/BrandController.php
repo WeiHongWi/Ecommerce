@@ -70,7 +70,9 @@ class BrandController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $brand = Brand::findOrFail($id);
+
+        return view('admin.brand.edit',compact('brand'));
     }
 
     /**
@@ -78,7 +80,26 @@ class BrandController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'logo' => ['image','max:2048'],
+            'name' => ['required','max:200'],
+            'status' => ['required'],
+            'feature' => ['required']
+        ]);
+        $brand = Brand::findOrFail($id);
+
+        $logo_path = $this->updateImage($request,'logo','uploads',$brand->logo);
+
+        $brand->logo = empty($logo_path)?$brand->logo:$logo_path;
+        $brand->name = $request->name;
+        $brand->status = $request->status;
+        $brand->feature = $request->feature;
+
+        $brand->save();
+
+        toastr('Update Successfully!');
+
+        return redirect()->route('admin.brand.index');
     }
 
     /**
