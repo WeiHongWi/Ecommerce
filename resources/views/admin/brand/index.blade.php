@@ -16,7 +16,7 @@
                   <div class="card-header">
                     <h4>All Brands</h4>
                     <div class="card-header-action">
-                        <a href="" class="btn btn-primary">Create New</a>
+                        <a href="{{route('admin.brand.create')}}" class="btn btn-primary">Create New</a>
                     </div>
                   </div>
                   <div class="card-body">
