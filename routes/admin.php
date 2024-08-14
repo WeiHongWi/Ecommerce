@@ -1,11 +1,13 @@
 <?php
 
+use App\DataTables\ProductImageGalleryDataTable;
 use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\AdminVendorProfileController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ChildCategoryController;
 use App\Http\Controllers\Backend\ProductController;
+use App\Http\Controllers\Backend\ProductImageGalleryController;
 use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\SlidersController;
 use App\Http\Controllers\Backend\SubcategoryController;
@@ -57,3 +59,7 @@ Route::put('product/change-status',[ProductController::class,'changeStatus'])->n
 Route::get('get-subcategory',[ProductController::class,'getSubcategory'])->name('product.getSubcategory');
 Route::get('get-childcategory',[ProductController::class,'getChildcategory'])->name('product.getChildcategory');
 Route::resource('product',ProductController::class);
+
+
+//Product Image Gallery
+Route::resource('gallery',ProductImageGalleryController::class);
