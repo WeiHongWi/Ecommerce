@@ -5,38 +5,22 @@
 
     <section class="section">
         <div class="section-header">
-            <h1>Product Image Gallery</h1>
+            <h1>Product Variants</h1>
         </div>
 
         <div class="section-body">
+            <h2 class="section-title">Product Variants</h2>
             <div>
-                <a href="{{route('admin.product.index')}}" class="btn btn-primary mb-3">Back </a>
+                <a href="{{route('admin.product.index')}}" class="btn btn-primary mb-3">Back</a>
             </div>
-            <div class="row">
-                <div class="col-12">
-                  <div class="card">
-                    <div class="card-header">
-                      <h4>Product : {{$product->name}}</h4>
-                    </div>
-                    <div class="card-body">
-                        <form action="{{route('admin.gallery.store')}}" method="POST" enctype="multipart/form-data">
-                            @csrf
-                            <div class="form-group">
-                                <label>Image <code>(Multiple Image Supported!!)</code></label>
-                                <input type="file" name="image[]" class="form-control" multiple>
-                                <input type="hidden" name="product" value="{{$product->id}}" class="form-control">
-                            </div>
-                            <button type="submit" class="btn btn-primary mt-4 ml-3">Upload</button>
-                        </form>
-                    </div>
-                  </div>
-                </div>
-              </div>
             <div class="row">
               <div class="col-12">
                 <div class="card">
                   <div class="card-header">
-                    <h4>All Images</h4>
+                    <h4>Product: {{$product->name}}</h4>
+                    <div class="card-header-action">
+                        <a href="{{route('admin.variant.create',['product' => request()->product])}}" class="btn btn-primary">Create New</a>
+                    </div>
                   </div>
                   <div class="card-body">
                       {{$dataTable->table()}}
@@ -59,7 +43,7 @@
                 let id = $(this).data('id');
 
                 $.ajax({
-                    url: "{{route('admin.product.change-status')}}",
+                    url: "{{route('admin.variant.change-status')}}",
                     method: 'PUT',
                     data: {
                         isChecked:isChecked,

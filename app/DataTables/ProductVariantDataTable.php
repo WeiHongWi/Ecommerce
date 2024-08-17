@@ -2,8 +2,7 @@
 
 namespace App\DataTables;
 
-use App\Models\Product;
-use App\Models\ProductImageGallery;
+use App\Models\ProductVariant;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
@@ -13,7 +12,7 @@ use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class ProductImageGalleryDataTable extends DataTable
+class ProductVariantDataTable extends DataTable
 {
     /**
      * Build the DataTable class.
@@ -23,28 +22,38 @@ class ProductImageGalleryDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->addColumn('action', function($query){
-                $deletebtn =
-                "<a class='btn btn-danger delete-item' href='".route('admin.gallery.destroy',$query->id)."'>
-                <i class='far fa-trash-alt'></i></a>";
-                return $deletebtn;
+            ->addColumn('action',function($query){
+                $editbtn = "<a href='".route('admin.variant.edit',$query->id)."'
+                               class='btn btn-primary'>Edit</a>";
+                $deletebtn = "<a href='".route('admin.variant.destroy',$query->id)."'
+                                 class='btn btn-danger ml-3 delete-item'>Delete</a>";
+
+                return $editbtn.$deletebtn;
             })
-            ->addColumn('image',function($query){
-                $img = "<img src='".asset($query->image)."' width=100px></img>";
-                return $img;
+            ->addColumn('status', function($query){
+                if($query->status == "1"){
+                    $button = '<label class="custom-switch mt-2">
+                        <input type="checkbox" checked name="custom-switch-checkbox" data-id="'.$query->id.'"
+                               class="custom-switch-input change-status">
+                        <span class="custom-switch-indicator"></span>
+                      </label>';
+                }else{
+                    $button = '<label class="custom-switch mt-2">
+                        <input type="checkbox" name="custom-switch-checkbox" data-id="'.$query->id.'"
+                               class="custom-switch-input change-status">
+                        <span class="custom-switch-indicator"></span>
+                      </label>';
+                }
+                return $button;
             })
-            ->addColumn('product name',function($query){
-                $product = Product::findOrFail($query->product_id);
-                return $product->name;
-            })
-            ->rawColumns(['image','action'])
+            ->rawColumns(['status','action'])
             ->setRowId('id');
     }
 
     /**
      * Get the query source of dataTable.
      */
-    public function query(ProductImageGallery $model): QueryBuilder
+    public function query(ProductVariant $model): QueryBuilder
     {
         return $model->newQuery();
     }
@@ -55,7 +64,7 @@ class ProductImageGalleryDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-                    ->setTableId('productimagegallery-table')
+                    ->setTableId('productvariant-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
                     //->dom('Bfrtip')
@@ -78,8 +87,8 @@ class ProductImageGalleryDataTable extends DataTable
     {
         return [
             Column::make('id')->width(20),
-            Column::make('image')->width(20),
-            Column::make('product name')->width(20),
+            Column::make('name')->width(20),
+            Column::make('status')->width(20),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
@@ -93,6 +102,6 @@ class ProductImageGalleryDataTable extends DataTable
      */
     protected function filename(): string
     {
-        return 'ProductImageGallery_' . date('YmdHis');
+        return 'ProductVariant_' . date('YmdHis');
     }
 }

@@ -18,6 +18,24 @@ trait ImageUploadTrait{
 
     }
 
+    public function uploadMultiImage(Request $request,$inputName,$path){
+        if($request->hasFile($inputName)){
+            $imagepath = [];
+
+            $images = $request->$inputName;
+            foreach($images as $image){
+                $ext = $image->getClientOriginalName();
+                $imageName = 'media'.uniqid().'_'.$ext;
+                $image->move(public_path('uploads'),$imageName);
+                $imagepath[] = $path."/".$imageName;
+            }
+
+
+            return $imagepath;
+        }
+
+    }
+
     public function updateImage(Request $request,$inputName,$path,$oldpath=null){
         if($request->hasFile($inputName)){
             if(File::exists(public_path($oldpath))){
