@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('variant_items', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->integer('variant_id');
+            $table->integer('product_variant_id');
             $table->string('item_name');
             $table->integer('price');
             $table->boolean('default');

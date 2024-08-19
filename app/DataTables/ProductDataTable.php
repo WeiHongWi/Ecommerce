@@ -36,9 +36,6 @@ class ProductDataTable extends DataTable
                                'position: absolute; transform: translate3d(-2px, 0px, 0px); top: 0px; left: 0px; will-change: transform;'>
                                 <a class='dropdown-item' href='".route('admin.gallery.index',['product' => $query->id])."'>Image Gallery</a>
                                 <a class='dropdown-item' href='".route('admin.variant.index',['product' => $query->id])."'>Variants</a>
-                                <a class='dropdown-item' href='#'>Something else here</a>
-                                <div class='dropdown-divider'></div>
-                                <a class='dropdown-item' href='#'>Separated link</a>
                             </div>";
                 return $editbtn.$deletebtn.$managebtn;
             })

@@ -8,6 +8,8 @@ use App\Models\Brand;
 use App\Models\Category;
 use App\Models\ChildCategory;
 use App\Models\Product;
+use App\Models\ProductImageGallery;
+use App\Models\ProductVariant;
 use App\Models\Subcategory;
 use App\Traits\ImageUploadTrait;
 use Illuminate\Http\Request;
@@ -180,7 +182,25 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $product = Product::findOrFail($id);
+        $this->deleteImage($product->thumb_img);
+
+        //Delete Product Image Gallery
+        $imagegalleries = ProductImageGallery::where('product_id',$id)->get();
+        foreach($imagegalleries as $image){
+            $this->deleteImage($image->image);
+            $image->delete();
+        }
+        //Delete Product Item
+        $variants = ProductVariant::where('product_id',$id)->get();
+        foreach($variants as $variant){
+            $variant->VariantItem()->delete();
+            $variant->delete();
+        }
+
+        $product->delete();
+
+        return response(['status' => 'success','message' => 'Delete Product Successfully']);
     }
 
     public function getSubcategory(Request $request){
@@ -192,5 +212,13 @@ class ProductController extends Controller
     public function getChildcategory(Request $request){
         $childcategories = ChildCategory::where('subcategory_id',$request->id)->where('status',1)->get();
         return $childcategories;
+    }
+
+    public function changeStatus(Request $request){
+        $product = Product::findOrFail($request->id);
+        $product->status = ($request->isChecked=="false")?"0":"1";
+        $product->save();
+
+        return response(['message' => 'Change product status successfully']);
     }
 }

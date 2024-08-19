@@ -13,6 +13,7 @@ use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\SlidersController;
 use App\Http\Controllers\Backend\SubcategoryController;
 use App\Http\Controllers\Backend\VariantItemController;
+use App\Models\VariantItem;
 use Illuminate\Support\Facades\Route;
 
 // Admin user dashboard route
@@ -60,6 +61,7 @@ Route::resource('vendor',AdminVendorProfileController::class);
 Route::put('product/change-status',[ProductController::class,'changeStatus'])->name('product.change-status');
 Route::get('get-subcategory',[ProductController::class,'getSubcategory'])->name('product.getSubcategory');
 Route::get('get-childcategory',[ProductController::class,'getChildcategory'])->name('product.getChildcategory');
+Route::put('change-status',[ProductController::class,'changeStatus'])->name('cproduct.change-status');
 Route::resource('product',ProductController::class);
 
 
@@ -74,9 +76,10 @@ Route::resource('variant',ProductVariantController::class);
 
 
 //Product Variant Item Route
+Route::get('variantitem/{id}/edit',[VariantItemController::class,'edit'])->name('variantitem.edit');
+Route::put('variantitem-update/{id}',[VariantItemController::class,'update'])->name('variantitem.update');
 Route::get('variantitem/{productID}/{variantID}',[VariantItemController::class,'index'])->name('variantitem.index');
 Route::get('variantitem/create/{productID}/{variantID}',[VariantItemController::class,'create'])->name('variantitem.create');
-Route::get('variantitem/{id}/edit',[VariantItemController::class,'edit'])->name('variantitem.edit');
 Route::post('variantitem',[VariantItemController::class,'store'])->name('variantitem.store');
 Route::delete('variantitem/{id}',[VariantItemController::class,'destroy'])->name('variantitem.destroy');
-
+Route::put('variantitem/change-status',[VariantItemController::class,'changeStatus'])->name('variantitem.change-status');

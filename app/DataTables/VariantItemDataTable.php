@@ -63,7 +63,7 @@ class VariantItemDataTable extends DataTable
      */
     public function query(VariantItem $model): QueryBuilder
     {
-        return $model->newQuery();
+        return $model->where('product_variant_id',request()->variantID)->newQuery();
     }
 
     /**
