@@ -3,6 +3,7 @@
 namespace App\DataTables;
 
 use App\Models\ProductVariant;
+use App\Models\VariantItem;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
@@ -12,7 +13,7 @@ use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class ProductVariantDataTable extends DataTable
+class VariantItemDataTable extends DataTable
 {
     /**
      * Build the DataTable class.
@@ -22,16 +23,6 @@ class ProductVariantDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->addColumn('action',function($query){
-                $managebtn = "<a href='".route('admin.variantitem.index',['productID' => request()->product,
-                              'variantID' => $query->id])."' class='btn btn-info mr-3'>Manage Variant</a>";
-                $editbtn = "<a href='".route('admin.variant.edit',$query->id)."'
-                               class='btn btn-primary'>Edit</a>";
-                $deletebtn = "<a href='".route('admin.variant.destroy',$query->id)."'
-                                 class='btn btn-danger ml-3 delete-item'>Delete</a>";
-
-                return $managebtn.$editbtn.$deletebtn;
-            })
             ->addColumn('status', function($query){
                 if($query->status == "1"){
                     $button = '<label class="custom-switch mt-2">
@@ -48,14 +39,29 @@ class ProductVariantDataTable extends DataTable
                 }
                 return $button;
             })
-            ->rawColumns(['status','action'])
+            ->addColumn('variant name',function($query){
+                $variant = ProductVariant::findOrFail($query->variant_id);
+                return $variant->name;
+            })
+            ->addColumn('action',function($query){
+                $editbtn = "<a href='".route('admin.variantitem.edit',$query->id)."'
+                               class='btn btn-primary'>Edit</a>";
+                $deletebtn = "<a href='".route('admin.variantitem.destroy',$query->id)."'
+                                 class='btn btn-danger ml-3 delete-item'>Delete</a>";
+
+                return $editbtn.$deletebtn;
+            })
+            ->addColumn('default',function($query){
+                return $query->default?'<i class="badge badge-success">Yes</i>':'<i class="badge badge-danger">No</i>';
+            })
+            ->rawColumns(['status','action','default'])
             ->setRowId('id');
     }
 
     /**
      * Get the query source of dataTable.
      */
-    public function query(ProductVariant $model): QueryBuilder
+    public function query(VariantItem $model): QueryBuilder
     {
         return $model->newQuery();
     }
@@ -66,7 +72,7 @@ class ProductVariantDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-                    ->setTableId('productvariant-table')
+                    ->setTableId('variantitem-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
                     //->dom('Bfrtip')
@@ -89,8 +95,11 @@ class ProductVariantDataTable extends DataTable
     {
         return [
             Column::make('id')->width(20),
-            Column::make('name')->width(20),
+            Column::make('variant name')->width(20),
+            Column::make('item_name')->width(20),
+            Column::make('price')->width(20),
             Column::make('status')->width(20),
+            Column::make('default')->width(20),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
@@ -104,6 +113,6 @@ class ProductVariantDataTable extends DataTable
      */
     protected function filename(): string
     {
-        return 'ProductVariant_' . date('YmdHis');
+        return 'VariantItem_' . date('YmdHis');
     }
 }

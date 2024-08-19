@@ -12,6 +12,7 @@ use App\Http\Controllers\Backend\ProductVariantController;
 use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\SlidersController;
 use App\Http\Controllers\Backend\SubcategoryController;
+use App\Http\Controllers\Backend\VariantItemController;
 use Illuminate\Support\Facades\Route;
 
 // Admin user dashboard route
@@ -70,3 +71,12 @@ Route::resource('gallery',ProductImageGalleryController::class);
 //Product Variant Route
 Route::put('variant/change-status',[ProductVariantController::class,'changeStatus'])->name('variant.change-status');
 Route::resource('variant',ProductVariantController::class);
+
+
+//Product Variant Item Route
+Route::get('variantitem/{productID}/{variantID}',[VariantItemController::class,'index'])->name('variantitem.index');
+Route::get('variantitem/create/{productID}/{variantID}',[VariantItemController::class,'create'])->name('variantitem.create');
+Route::get('variantitem/{id}/edit',[VariantItemController::class,'edit'])->name('variantitem.edit');
+Route::post('variantitem',[VariantItemController::class,'store'])->name('variantitem.store');
+Route::delete('variantitem/{id}',[VariantItemController::class,'destroy'])->name('variantitem.destroy');
+
