@@ -32,6 +32,12 @@
                         </div>
                         <div class="form-group">
                             <div>
+                                <label>Shop Name</label>
+                            </div>
+                            <input type="text" name="shop_name" class="form-control" value="{{$profile->shop_name}}" >
+                        </div>
+                        <div class="form-group">
+                            <div>
                                 <label>Phone</label>
                             </div>
                             <input type="text" name="phone" class="form-control" value="{{$profile->phone}}" >

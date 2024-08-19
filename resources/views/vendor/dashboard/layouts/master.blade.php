@@ -92,7 +92,7 @@
   <script src="{{asset('frontend/js/venobox.min.js')}}"></script>
   <!--classycountdown js-->
   <script src="{{asset('frontend/js/jquery.classycountdown.js')}}"></script>
-
+  <script src="{{asset('backend/assets/modules/summernote/summernote-bs4.js')}}"></script>
   <!--main/custom js-->
   <script src="{{asset('frontend/js/main.js')}}"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
