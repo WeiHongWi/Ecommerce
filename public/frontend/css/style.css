@@ -9478,3 +9478,12 @@ a:not([href]):not([class]):hover {
 .wsus_input label{
     margin-bottom: 10px;
 }
+
+.create_button a{
+    text-align: right;
+}
+
+.form-switch .form-check-input {
+    width: 60px; /* 你可以根據需要調整寬度 */
+    height: 34px; /* 這樣可以保持比例 */
+}

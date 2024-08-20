@@ -38,13 +38,13 @@ Route::resource('category',CategoryController::class);
 
 
 //Subcategory Route
-Route::put('change-status',[SubcategoryController::class,'changeStatus'])->name('subcategory.change-status');
+Route::put('subcategory/change-status',[SubcategoryController::class,'changeStatus'])->name('subcategory.change-status');
 Route::resource('subcategory',SubcategoryController::class);
 
 //Childcategory Route
-Route::get('get-subcategory',[ChildCategoryController::class,'getSubcategory'])->name('childcategory.getSubcategory');
-Route::get('get-childcategory',[ChildCategoryController::class,'getChildcategory'])->name('childcategory.getChildcategory');
-Route::put('change-status',[ChildcategoryController::class,'changeStatus'])->name('childcategory.change-status');
+Route::get('childcategory/get-subcategory',[ChildCategoryController::class,'getSubcategory'])->name('childcategory.getSubcategory');
+Route::get('childcategory/get-childcategory',[ChildCategoryController::class,'getChildcategory'])->name('childcategory.getChildcategory');
+Route::put('childcategory/change-status',[ChildcategoryController::class,'changeStatus'])->name('childcategory.change-status');
 Route::resource('childcategory',ChildCategoryController::class);
 
 
@@ -61,7 +61,7 @@ Route::resource('vendor',AdminVendorProfileController::class);
 Route::put('product/change-status',[ProductController::class,'changeStatus'])->name('product.change-status');
 Route::get('get-subcategory',[ProductController::class,'getSubcategory'])->name('product.getSubcategory');
 Route::get('get-childcategory',[ProductController::class,'getChildcategory'])->name('product.getChildcategory');
-Route::put('change-status',[ProductController::class,'changeStatus'])->name('cproduct.change-status');
+Route::put('change-status',[ProductController::class,'changeStatus'])->name('product.change-status');
 Route::resource('product',ProductController::class);
 
 
