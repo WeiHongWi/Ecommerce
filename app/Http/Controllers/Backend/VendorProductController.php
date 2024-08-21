@@ -8,6 +8,7 @@ use App\Models\Brand;
 use App\Models\Category;
 use App\Models\ChildCategory;
 use App\Models\Product;
+use App\Models\ProductVariant;
 use App\Models\Subcategory;
 use App\Traits\ImageUploadTrait;
 use Illuminate\Http\Request;
@@ -193,4 +194,5 @@ class VendorProductController extends Controller
         $childcategorites = ChildCategory::where('subcategory_id',$request->id)->where('status',1)->get();
         return $childcategorites;
     }
+
 }

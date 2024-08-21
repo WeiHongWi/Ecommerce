@@ -63,7 +63,8 @@ class VendorProductVariantController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $variant = ProductVariant::findOrFail($id);
+        return view('vendor.product.variants.edit',compact('variant'));
     }
 
     /**
@@ -71,7 +72,19 @@ class VendorProductVariantController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'name' => ['required','max:200'],
+            'status' => ['required'],
+        ]);
+
+        $variant = ProductVariant::findOrFail($id);
+        $variant->name = $request->name;
+        $variant->status = $request->status;
+
+        $variant->save();
+        toastr('Update Variant Successfully');
+
+        return redirect()->route('vendor.vendor-variant.index',['product' => $variant->product_id]);
     }
 
     /**
@@ -80,5 +93,13 @@ class VendorProductVariantController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function changeStatus(Request $request){
+        $product = ProductVariant::findOrFail($request->id);
+        $product->status = ($request->isChecked == "false")?"0":"1";
+        $product->save();
+
+        return response(['message' => 'Change Successfully']);
     }
 }

@@ -78,7 +78,6 @@ class VendorProductDataTable extends DataTable
                 $button = '<div class="form-check form-switch">
                 <input class="form-check-input" data-id="'.$query->id.'"  type="checkbox"
                 role="switch" id="flexSwitchCheckDefault" change-status>
-
                 </div>';
             }
             return $button;

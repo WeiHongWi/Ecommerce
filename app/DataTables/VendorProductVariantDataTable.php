@@ -24,7 +24,32 @@ class VendorProductVariantDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->addColumn('action', 'vendorproductvariant.action')
+            ->addColumn('action', function($query){
+                $editbtn = "<a href='".route('vendor.vendor-variant.edit',$query->id)."'
+                               class='btn btn-primary'>Edit</a>";
+                $deletebtn = "<a href='".route('vendor.vendor-variant.destroy',$query->id)."'
+                                 class='btn btn-danger' delete-item style='margin-left:3px;'>Delete</a>";
+                return $editbtn.$deletebtn;
+            })
+            ->addColumn('product name', function($query){
+                $product = Product::findOrFail($query->product_id);
+                return $product->name;
+            })
+            ->addColumn('status',function($query){
+                if($query->status == "1"){
+                    $button = '<div class="form-check form-switch">
+                    <input checked class="form-check-input change-status" data-id="'.$query->id.'" type="checkbox"
+                           role="switch" id="flexSwitchCheckDefault">
+                    </div>';
+                }else{
+                    $button = '<div class="form-check form-switch" change-status>
+                    <input class="form-check-input change-status" data-id="'.$query->id.'" type="checkbox"
+                    role="switch" id="flexSwitchCheckDefault">
+                    </div>';
+                }
+                return $button;
+            })
+            ->rawColumns(['status','action'])
             ->setRowId('id');
     }
 
@@ -66,6 +91,7 @@ class VendorProductVariantDataTable extends DataTable
         return [
             Column::make('id')->width(20),
             Column::make('name')->width(20),
+            Column::make('product name')->width(20),
             Column::make('status')->width(20),
             Column::computed('action')
                   ->exportable(false)
