@@ -29,15 +29,18 @@ class VendorProductDataTable extends DataTable
             $deletebtn = "<a href='".route('vendor.product.destroy',$query->id)."'
                         class='btn btn-danger delete-item' style='margin-left: 4px;'>Delete</a>";
 
-            $managebtn =  "<button type='button' class='btn btn-dark dropdown-toggle' style='margin-left: 4px;'
-                           data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
-                           <i class='fas fa-cog'></i>
-                           </button>
-                           <div class='dropdown-menu dropleft' x-placement='left-start' style=
-                           'position: absolute; transform: translate3d(-2px, 0px, 0px); top: 0px; left: 0px; will-change: transform;'>
-                            <a class='dropdown-item' href='".route('admin.gallery.index',['product' => $query->id])."'>Image Gallery</a>
-                            <a class='dropdown-item' href='".route('admin.variant.index',['product' => $query->id])."'>Variants</a>
-                        </div>";
+            $managebtn =  "<div class='btn-group dropstart' style='margin-left:4px;'>
+                           <button type='button' class='btn btn-secondary dropdown-toggle'
+                           data-bs-toggle='dropdown' aria-expanded='false'>
+                           <i class='fas fa-cog'></i></button>
+                           <ul class='dropdown-menu'>
+                                <li><a class='dropdown-item' href='".route('vendor.vendor-product-gallery.index',['product' => $query->id])."'>Image Gallery</a></li>
+                                <li><a class='dropdown-item' href='".route('admin.variant.index',['product' => $query->id])."'>Variants</a></li>
+                            </ul>
+                           </div>";
+
+                        /*<a class='dropdown-item' href='".route('admin.gallery.index',['product' => $query->id])."'>Image Gallery</a>
+                            <a class='dropdown-item' href='".route('admin.variant.index',['product' => $query->id])."'>Variants</a>*/
             return $editbtn.$deletebtn.$managebtn;
         })
         ->addColumn('thumb_img',function($query){
