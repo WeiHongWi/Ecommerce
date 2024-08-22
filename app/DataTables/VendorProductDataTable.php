@@ -70,14 +70,14 @@ class VendorProductDataTable extends DataTable
         ->addColumn('status',function($query){
             if($query->status == "1"){
                 $button = '<div class="form-check form-switch">
-                <input checked class="form-check-input" data-id="'.$query->id.'" type="checkbox"
-                       role="switch" id="flexSwitchCheckDefault" change-status>
+                <input checked class="form-check-input change-status" data-id="'.$query->id.'" type="checkbox"
+                       role="switch" id="flexSwitchCheckDefault" >
                 </div>';
 
             }else{
                 $button = '<div class="form-check form-switch">
-                <input class="form-check-input" data-id="'.$query->id.'"  type="checkbox"
-                role="switch" id="flexSwitchCheckDefault" change-status>
+                <input class="form-check-input change-status" data-id="'.$query->id.'"  type="checkbox"
+                role="switch" id="flexSwitchCheckDefault">
                 </div>';
             }
             return $button;

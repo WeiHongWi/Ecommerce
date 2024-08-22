@@ -1,4 +1,4 @@
-@extends('admin.layouts.master')
+@extends('vendor.dashboard.layouts.master')
 @section('content')
 
 <!-- Main Content -->
@@ -29,15 +29,15 @@
                             <div>
                                 <label>Image</label>
                             </div>
-                            <input type="file" name="image" class="form-control" >
+                            <input type="file" name="image" class="form-control" style="margin-bottom:4px;" >
                         </div>
                         <div class="form-group">
                             <div>
                                 <label>Name</label>
                             </div>
-                            <input type="text" name="name" class="form-control" value="{{$product->name}}" >
+                            <input type="text" name="name" class="form-control" style="margin-bottom:4px;" value="{{$product->name}}" >
                         </div>
-                        <div class="row">
+                        <div class="row" style="margin-bottom:4px;">
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <div>
@@ -77,7 +77,7 @@
                             <div>
                                 <label for="inputState">Brand</label>
                             </div>
-                            <select id="inputState" name="brand" class="form-control">
+                            <select id="inputState" name="brand" class="form-control" style="margin-bottom:4px;">
                                 <option value="">Select</option>
                                 @foreach ($brands as $brand)
                                     <option value="{{$brand->id}}">{{$brand->name}}</option>
@@ -89,19 +89,19 @@
                             <div>
                                 <label>SKU</label>
                             </div>
-                            <input type="text" name="sku" class="form-control" value="{{$product->sku}}" >
+                            <input type="text" name="sku" class="form-control" style="margin-bottom:4px;" value="{{$product->sku}}" >
                         </div>
                         <div class="form-group">
                             <div>
                                 <label>Price</label>
                             </div>
-                            <input type="text" name="price" class="form-control" value="{{$product->price}}" >
+                            <input type="text" name="price" class="form-control" style="margin-bottom:4px;" value="{{$product->price}}" >
                         </div>
                         <div class="form-group">
                             <div>
                                 <label>Offer Price</label>
                             </div>
-                            <input type="text" name="offer_price" class="form-control" value="{{$product->offer_price}}" >
+                            <input type="text" name="offer_price" class="form-control" style="margin-bottom:4px;" value="{{$product->offer_price}}" >
                         </div>
 
                         <div class="row">
@@ -111,7 +111,7 @@
                                     <label>Offer Start Date</label>
                                 </div>
                                 <input type="date" name="offer_start_date" class="form-control"
-                                       value="{{$product->offer_start_date}}" >
+                                       style="margin-bottom:4px;" value="{{$product->offer_start_date}}" >
                             </div>
                             </div>
                             <div class="col-md-6">
@@ -120,7 +120,7 @@
                                     <label>Offer End Date</label>
                                 </div>
                                 <input type="date" name="offer_end_date" class="form-control"
-                                       value="{{$product->offer_end_date}}" >
+                                       style="margin-bottom:4px;"value="{{$product->offer_end_date}}" >
                             </div>
                         </div>
                         </div>
@@ -128,29 +128,29 @@
                             <div>
                                 <label>Stock Quantity</label>
                             </div>
-                            <input type="text" name="quantity" class="form-control" value="{{$product->quantity}}" >
+                            <input type="text" name="quantity" style="margin-bottom:4px;" class="form-control" value="{{$product->quantity}}" >
                         </div>
                         <div class="form-group">
                             <div>
                                 <label>Video Link</label>
                             </div>
-                            <input type="text" name="video_link" class="form-control" value="{{$product->video_link}}" >
+                            <input type="text" name="video_link" style="margin-bottom:4px;" class="form-control" value="{{$product->video_link}}" >
                         </div>
                         <div class="form-group">
                             <div>
                                 <label>Short Description</label>
                             </div>
-                            <textarea class="form-control" name="short_description" >{!! $product->short_description !!}</textarea>
+                            <textarea class="form-control" style="margin-bottom:4px;" name="short_description" >{!! $product->short_description !!}</textarea>
                         </div>
                         <div class="form-group">
                             <div>
                                 <label>Long Description</label>
                             </div>
-                            <textarea class="form-control summernote" name="long_description" >{!! $product->long_description !!}</textarea>
+                            <textarea class="form-control summernote" style="margin-bottom:4px;" name="long_description" >{!! $product->long_description !!}</textarea>
                         </div>
                         <div class="form-group">
                             <label for="inputState">Product Type</label>
-                            <select id="inputState" class="form-control" name="product_type">
+                            <select id="inputState" class="form-control" style="margin-bottom:4px;" name="product_type">
                                 <option value="0">Select</option>
                                 <option {{($product->product_type=='new_arrival')?'selected':''}} value="new_arrival">New Arrival</option>
                                 <option {{($product->product_type=='featured_product')?'selected':''}} value="featured_product">Featured Product</option>
@@ -162,19 +162,19 @@
                             <div>
                                 <label>Seo Title</label>
                             </div>
-                            <input class="form-control" name="seo_title" value="{{$product->seo_title}}" ></input>
+                            <input class="form-control" style="margin-bottom:4px;" name="seo_title" value="{{$product->seo_title}}" ></input>
                         </div>
                         <div class="form-group">
                             <div>
                                 <label>SEO Description</label>
                             </div>
-                            <textarea class="form-control" name="seo_description">{!!$product->seo_description!!}</textarea>
+                            <textarea class="form-control" style="margin-bottom:4px;" name="seo_description">{!!$product->seo_description!!}</textarea>
                         </div>
                         <div class="form-group">
                             <div>
                                 <label for="inputState">Status</label>
                             </div>
-                            <select id="inputState" name="status" class="form-control">
+                            <select id="inputState" name="status" style="margin-bottom:4px;" class="form-control">
                                 <option value="1">Active</option>
                                 <option value="0">Inactive</option>
                             </select>
@@ -188,9 +188,8 @@
               </div>
             </div>
           </div>
-        </section>
-
-
+    </div>
+</section>
 
 @endsection
 @push('scripts')
