@@ -47,4 +47,33 @@ class VendorProductVariantItemController extends Controller
         return redirect()->route('vendor.vendor-variant-item.index',['productID'
                => $request->product_id,'variantID' => $request->variant_id]);
     }
+
+    public function edit(string $id){
+        $variantitem = VariantItem::findOrFail($id);
+        $variant = ProductVariant::where('id',$variantitem->product_variant_id)->first();
+
+        return view('vendor.product.variantitem.edit',compact('variantitem','variant'));
+    }
+
+    public function update(Request $request,string $id){
+        $request->validate([
+            'item_name' => ['required','max:200'],
+            'price' => ['integer','required'],
+            'status' => ['required'],
+            'default' => ['required']
+        ]);
+
+        $variantitem = VariantItem::findOrFail($id);
+
+        $variantitem->item_name = $request->item_name;
+        $variantitem->status = $request->status;
+        $variantitem->default = $request->default;
+        $variantitem->price = $request->price;
+
+        $variantitem->save();
+        toastr('Update Vendor Product Variant Item Successfully.');
+
+        return redirect()->route('vendor.vendor-variant-item.index',['productID'
+               => $request->product_id,'variantID' => $variantitem->product_variant_id]);
+    }
 }

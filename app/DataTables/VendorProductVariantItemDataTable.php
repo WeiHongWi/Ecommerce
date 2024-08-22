@@ -2,6 +2,7 @@
 
 namespace App\DataTables;
 
+use App\Models\ProductVariant;
 use App\Models\VariantItem;
 use App\Models\VendorProductVariantItem;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
@@ -23,7 +24,34 @@ class VendorProductVariantItemDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->addColumn('action', 'vendorproductvariantitem.action')
+            ->addColumn('action', function($query){
+                $editbtn = "<a href='".route('vendor.vendor-variant-item.edit',
+                            ['variantID' => $query->id])."' class='btn btn-primary' style='margin-right:3px;'>Edit</a>";
+                $deletebtn = "<a href='' class='btn btn-danger'>Delete</a>";
+                return $editbtn.$deletebtn;
+            })
+            ->addColumn('variant name',function($query){
+                $variant = ProductVariant::findOrFail($query->product_variant_id);
+                return $variant->name;
+            })
+            ->addColumn('status', function($query){
+                if($query->status == "1"){
+                    $button = '<div class="form-check form-switch">
+                    <input checked class="form-check-input change-status" data-id="'.$query->id.'" type="checkbox"
+                           role="switch" id="flexSwitchCheckDefault">
+                    </div>';
+                }else{
+                    $button = '<div class="form-check form-switch" change-status>
+                    <input class="form-check-input change-status" data-id="'.$query->id.'" type="checkbox"
+                    role="switch" id="flexSwitchCheckDefault">
+                    </div>';
+                }
+                return $button;
+            })
+            ->addColumn('default',function($query){
+                return $query->default?'<i class="bg bg-info">Yes</i>':'<i class="bg bg-danger">No</i>';
+            })
+            ->rawColumns(['status','action','default'])
             ->setRowId('id');
     }
 
@@ -63,15 +91,17 @@ class VendorProductVariantItemDataTable extends DataTable
     public function getColumns(): array
     {
         return [
+            Column::make('id')->width(20),
+            Column::make('variant name')->width(20),
+            Column::make('item_name')->width(20),
+            Column::make('price')->width(20),
+            Column::make('default')->width(20),
+            Column::make('status')->width(20),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
                   ->width(60)
                   ->addClass('text-center'),
-            Column::make('id'),
-            Column::make('add your columns'),
-            Column::make('created_at'),
-            Column::make('updated_at'),
         ];
     }
 
