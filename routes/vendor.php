@@ -40,9 +40,13 @@ Route::get('vendor-variant-item/{variantID}/edit',[VendorProductVariantItemContr
     ->name('vendor-variant-item.edit');
 Route::put('vendor-variant-item/update/{variantID}',[VendorProductVariantItemController::class,'update'])
     ->name('vendor-variant-item.update');
+Route::put('vendor-variant-item/change-status',[VendorProductVariantItemController::class,'changeStatus'])
+    ->name('vendor-variant-item.change-status');
 Route::get('vendor-variant-item/{productID}/{variantID}',[VendorProductVariantItemController::class,'index'])
     ->name('vendor-variant-item.index');
 Route::get('vendor-variant-item/create/{productID}/{variantID}',[VendorProductVariantItemController::class,'create'])
     ->name('vendor-variant-item.create');
 Route::post('vendor-variant-item',[VendorProductVariantItemController::class,'store'])
     ->name('vendor-variant-item.store');
+Route::delete('vendor-variant-item/{id}',[VendorProductVariantItemController::class,'destroy'])
+    ->name('vendor-variant-item.destroy');

@@ -76,4 +76,20 @@ class VendorProductVariantItemController extends Controller
         return redirect()->route('vendor.vendor-variant-item.index',['productID'
                => $request->product_id,'variantID' => $variantitem->product_variant_id]);
     }
+
+    public function changeStatus(Request $request){
+        $item = VariantItem::findOrFail($request->id);
+
+        $item->status = ($request->isChecked == "false")?"0":"1";
+        $item->save();
+
+        return response(['status' => 'success','message' => 'Change Success']);
+    }
+
+    public function destroy(Request $request){
+        $item = VariantItem::findOrFail($request->id);
+        $item->delete();
+
+        return response(['message' => 'Delete Success']);
+    }
 }

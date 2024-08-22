@@ -44,13 +44,14 @@
                 let id = $(this).data('id');
 
                 $.ajax({
-                    url: "{{route('admin.variantitem.change-status')}}",
+                    url: "{{route('vendor.vendor-variant-item.change-status')}}",
                     method: 'PUT',
                     data: {
                         isChecked:isChecked,
-                        id:id
+                        id:id,
+                        '_token': '{{ csrf_token() }}'
                     },
-                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                    //headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                     success: function(data){
                         console.log(data);
                     },
