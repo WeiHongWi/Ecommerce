@@ -24,23 +24,6 @@ class SellerProductDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-        ->addColumn('action', function($query){
-            $editbtn = "<a href='".route('admin.product.edit',$query->id)."'
-                        class='btn btn-primary'>Edit</a>";
-            $deletebtn = "<a href='".route('admin.product.destroy',$query->id)."'
-                        class='btn btn-danger ml-3 mr-3 delete-item'>Delete</a>";
-
-            $managebtn =  "<button type='button' class='btn btn-dark dropdown-toggle' ml-3
-                           data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
-                           <i class='fas fa-cog'></i>
-                           </button>
-                           <div class='dropdown-menu dropleft' x-placement='left-start' style=
-                           'position: absolute; transform: translate3d(-2px, 0px, 0px); top: 0px; left: 0px; will-change: transform;'>
-                            <a class='dropdown-item' href='".route('admin.gallery.index',['product' => $query->id])."'>Image Gallery</a>
-                            <a class='dropdown-item' href='".route('admin.variant.index',['product' => $query->id])."'>Variants</a>
-                        </div>";
-            return $editbtn.$deletebtn.$managebtn;
-        })
         ->addColumn('thumb_img',function($query){
             $img = "<img src='".asset($query->thumb_img)."' width=100px></img>";
             return $img;
@@ -65,22 +48,6 @@ class SellerProductDataTable extends DataTable
                     break;
             }
         })
-        ->addColumn('status',function($query){
-            if($query->status == "1"){
-                $button = '<label class="custom-switch mt-2">
-                    <input type="checkbox" checked name="custom-switch-checkbox" data-id="'.$query->id.'"
-                           class="custom-switch-input change-status">
-                    <span class="custom-switch-indicator"></span>
-                  </label>';
-            }else{
-                $button = '<label class="custom-switch mt-2">
-                    <input type="checkbox" name="custom-switch-checkbox" data-id="'.$query->id.'"
-                           class="custom-switch-input change-status">
-                    <span class="custom-switch-indicator"></span>
-                  </label>';
-            }
-            return $button;
-        })
         ->addColumn('vendor',function($query){
             $product = Product::findOrFail($query->id);
             return $product->vendor->shop_name;
@@ -91,7 +58,7 @@ class SellerProductDataTable extends DataTable
             <option value='1' ".($query->is_approved == '1' ? 'selected' : '').">Approved</option>
             </select>";
         })
-        ->rawColumns(['action','thumb_img','status','type','approved'])
+        ->rawColumns(['thumb_img','type','approved'])
         ->setRowId('id');
     }
 
@@ -140,12 +107,6 @@ class SellerProductDataTable extends DataTable
             Column::make('name')->width(20),
             Column::make('price')->width(20),
             Column::make('approved')->width(20),
-            Column::make('status')->width(20),
-            Column::computed('action')
-                  ->exportable(false)
-                  ->printable(false)
-                  ->width(200)
-                  ->addClass('text-center'),
         ];
     }
 
