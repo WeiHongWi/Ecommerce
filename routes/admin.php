@@ -10,6 +10,7 @@ use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\ProductImageGalleryController;
 use App\Http\Controllers\Backend\ProductVariantController;
 use App\Http\Controllers\Backend\ProfileController;
+use App\Http\Controllers\Backend\SellerProductController;
 use App\Http\Controllers\Backend\SlidersController;
 use App\Http\Controllers\Backend\SubcategoryController;
 use App\Http\Controllers\Backend\VariantItemController;
@@ -83,3 +84,9 @@ Route::get('variantitem/create/{productID}/{variantID}',[VariantItemController::
 Route::post('variantitem',[VariantItemController::class,'store'])->name('variantitem.store');
 Route::delete('variantitem/{id}',[VariantItemController::class,'destroy'])->name('variantitem.destroy');
 Route::put('variantitem/change-status',[VariantItemController::class,'changeStatus'])->name('variantitem.change-status');
+
+
+//Seller Product Variant
+Route::get('seller',[SellerProductController::class,'index'])->name('seller.index');
+Route::get('pending-seller',[SellerProductController::class,'pending_index'])->name('peding-seller.index');
+Route::put('change-approved',[SellerProductController::class,'changeApproved'])->name('pending-seller.change-approved');

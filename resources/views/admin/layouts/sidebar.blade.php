@@ -39,7 +39,13 @@
                     <li class="{{ setsidebarActive([
                         'admin.product.*',
                     ])}}"><a class="nav-link" href="{{route('admin.product.index')}}">Product</a></li>
-                    </ul>
+                    <li class="{{ setsidebarActive([
+                        'admin.product.*',
+                    ])}}"><a class="nav-link" href="{{route('admin.seller.index')}}">Seller Product</a></li>
+                    <li class="{{ setsidebarActive([
+                        'admin.seller.*',
+                    ])}}"><a class="nav-link" href="{{route('admin.peding-seller.index')}}">Seller Pending Product</a></li>
+                </ul>
             </li>
             <li class="dropdown {{ setsidebarActive([
                 'admin.slider.*',
