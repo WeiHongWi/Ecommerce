@@ -65,6 +65,9 @@
                 <li class="{{ setsidebarActive([
                     'admin.vendor.*',
                 ])}}"><a class="nav-link" href="{{route('admin.vendor.index')}}">Vendor</a></li>
+                <li class="{{ setsidebarActive([
+                    'admin.vendor.*',
+                ])}}"><a class="nav-link" href="{{route('admin.flash-sale.index')}}">Flash Sale</a></li>
               </ul>
             </li>
         {{--<li class="dropdown">
