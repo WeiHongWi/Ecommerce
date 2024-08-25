@@ -84,7 +84,7 @@
 
     <!--jquery library js-->
     <script src="{{asset('frontend/js/jquery-3.6.0.min.js')}}"></script>
-    <!--bootstrap js--frontend/>
+    <!--bootstrap js--frontend-->
     <script src="{{asset('frontend/js/bootstrap.bundle.min.js')}}"></script>
     <!--font-awesome js-->
     <script src="{{asset('frontend/js/Font-Awesome.js')}}"></script>
@@ -127,6 +127,7 @@
             @endforeach
         @endif
     </script>
+    @stack('scripts')
 </body>
 
 </html>
