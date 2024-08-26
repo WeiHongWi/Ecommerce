@@ -9,7 +9,7 @@
                         <div class="wsus__flash_coundown">
                             <span class=" end_text">flash sale</span>
                             <div class="simply-countdown simply-countdown-1"></div>
-                            <a class="common_btn" href="#">see more <i class="fas fa-caret-right"></i></a>
+                            <a class="common_btn" href="{{route('flash-sale')}}">see more <i class="fas fa-caret-right"></i></a>
                         </div>
                     </div>
                 </div>
