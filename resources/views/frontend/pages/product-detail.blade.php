@@ -113,7 +113,12 @@
                         <div class="wsus__pro_details_text">
                             <a class="title" href="#">{{$product->name}}</a>
                             <p class="wsus__stock_area"><span class="in_stock">in stock</span> ({{$product->quantity}} item)</p>
-                            <h4>{{$product->offer_price}} <del>{{$product->price}}</del></h4>
+                            @if (checkDiscount($product))
+                                <h4>${{$product->offer_price}} <del>{{$product->price}}</del></h4>
+                            @else
+                                <h4>${{$product->price}}</h4>
+                            @endif
+
                             <!-- <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia
                                 neque
                                 sint obcaecati asperiores dolor cumque. ad voluptate dolores reprehenderit hic adipisci
@@ -130,7 +135,7 @@
                                         <h5 class="mb-2">{{$variant->name}}:</h5>
                                         <select class="select_2" name="state">
                                             @foreach ($variant->VariantItem as $item )
-                                                <option value="{{($item->default==1)?'selected':''}}">{{$item->item_name}}</option>
+                                                <option value="{{($item->default==1)?'selected':''}}">{{$item->item_name}}( ${{$item->price}} )</option>
                                             @endforeach
                                         </select>
                                     </div>
