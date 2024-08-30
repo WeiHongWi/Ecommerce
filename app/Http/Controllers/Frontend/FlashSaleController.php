@@ -13,7 +13,7 @@ class FlashSaleController extends Controller
         $flashsales = FlashSale::first();
         $items = FlashSaleItem::where('flash_sale_id',$flashsales->id)
                               ->where('status','1')
-                              ->paginate(1);
+                              ->paginate(10);
         return view('frontend.pages.flash-sale',compact('flashsales','items'));
     }
 }

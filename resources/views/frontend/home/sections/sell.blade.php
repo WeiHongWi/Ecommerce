@@ -22,7 +22,7 @@
                         @if (checkDiscount($item->product))
                             <span class="wsus__minus">-{{checkDiscountPercent($item->product)}}%</span>
                         @endif
-                        <a class="wsus__pro_link" href="product_details.html">
+                        <a class="wsus__pro_link" href="{{route('product-detail',$item->product->slug)}}">
                             <img src="{{$item->product->thumb_img}}" alt="product" class="img-fluid w-100 img_1" />
                             <img src="
                             @if (isset($item->product->imagegallery[0]->image))

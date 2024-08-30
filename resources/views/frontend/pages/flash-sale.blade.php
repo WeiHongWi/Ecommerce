@@ -17,7 +17,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row mb-3">
                 <!--<div class="row flash_sell_slider">-->
                     @foreach ( $items as $item )
                     <div class="col-xl-3 col-sm-6 col-lg-4">
@@ -26,7 +26,7 @@
                             @if (checkDiscount($item->product))
                                 <span class="wsus__minus">-{{checkDiscountPercent($item->product)}}%</span>
                             @endif
-                            <a class="wsus__pro_link" href="product_details.html">
+                            <a class="wsus__pro_link" href="">
                                 <img src="{{$item->product->thumb_img}}" alt="product" class="img-fluid w-100 img_1" />
                                 <img src="
                                 @if (isset($item->product->imagegallery[0]->image))
