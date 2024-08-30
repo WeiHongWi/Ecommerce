@@ -20,4 +20,8 @@ class Product extends Model
     public function imagegallery(){
         return $this->hasMany(ProductImageGallery::class);
     }
+
+    public function variant(){
+        return $this->hasMany(ProductVariant::class);
+    }
 }
