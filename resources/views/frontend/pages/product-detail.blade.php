@@ -85,7 +85,7 @@
         <div class="container">
             <div class="wsus__details_bg">
                 <div class="row">
-                    <div class="col-xl-4 col-md-5 col-lg-5">
+                    <div class="col-xl-4 col-md-5 col-lg-5" style="z-index: 999 !important">
                         <div id="sticky_pro_zoom">
                             <div class="exzoom hidden" id="exzoom">
                                 <div class="exzoom_img_box">
@@ -144,52 +144,18 @@
                             </div>
                             <div class="wsus__quentity">
                                 <h5>quantity :</h5>
-                                <form class="select_number">
-                                    <input class="number_area" type="text" min="1" max="100" value="1" />
+                                <form class="select_number" style="margin-top: 5px;">
+                                    <input class="number_area"  type="text" min="1" max="100" value="1" />
                                 </form>
                             </div>
-                            <div class="wsus__selectbox">
-                                <div class="row">
-                                    <div class="col-xl-6 col-sm-6">
-                                        <h5 class="mb-2">select:</h5>
-                                        <select class="select_2" name="state">
-                                            <option>default select</option>
-                                            <option>select 1</option>
-                                            <option>select 2</option>
-                                            <option>select 3</option>
-                                            <option>select 4</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-xl-6 col-sm-6">
-                                        <h5 class="mb-2">select:</h5>
-                                        <select class="select_2" name="state">
-                                            <option>default select</option>
-                                            <option>select 1</option>
-                                            <option>select 2</option>
-                                            <option>select 3</option>
-                                            <option>select 4</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <ul class="wsus__button_area">
+                            <ul class="wsus__button_area" style="margin-top: 5px;">
                                 <li><a class="add_cart" href="#">add to cart</a></li>
                                 <li><a class="buy_now" href="#">buy now</a></li>
                                 <li><a href="#"><i class="fal fa-heart"></i></a></li>
                                 <li><a href="#"><i class="far fa-random"></i></a></li>
                             </ul>
-                            <p class="brand_model"><span>model :</span> 12345670</p>
-                            <p class="brand_model"><span>brand :</span> The Northland</p>
-                            <div class="wsus__pro_det_share">
-                                <h5>share :</h5>
-                                <ul class="d-flex">
-                                    <li><a class="facebook" href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a class="twitter" href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a class="whatsapp" href="#"><i class="fab fa-whatsapp"></i></a></li>
-                                    <li><a class="instagram" href="#"><i class="fab fa-instagram"></i></a></li>
-                                </ul>
-                            </div>
-                            <a class="wsus__pro_report" href="#" data-bs-toggle="modal"
+                            <p class="brand_model"><span>brand :</span> {{$product->brand->name}}</p>
+                            <a class="wsus__pro_report" style="margin-top: 10px;" href="#" data-bs-toggle="modal"
                                 data-bs-target="#exampleModal"><i class="fal fa-comment-alt-smile"></i> Report incorrect
                                 product information.</a>
                         </div>
@@ -245,11 +211,6 @@
                                         aria-controls="pills-home" aria-selected="true">Description</button>
                                 </li>
                                 <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="pills-profile-tab7" data-bs-toggle="pill"
-                                        data-bs-target="#pills-profile22" type="button" role="tab"
-                                        aria-controls="pills-profile" aria-selected="false">Information</button>
-                                </li>
-                                <li class="nav-item" role="presentation">
                                     <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill"
                                         data-bs-target="#pills-contact" type="button" role="tab"
                                         aria-controls="pills-contact" aria-selected="false">Vendor Info</button>
@@ -259,16 +220,6 @@
                                         data-bs-target="#pills-contact2" type="button" role="tab"
                                         aria-controls="pills-contact2" aria-selected="false">Reviews</button>
                                 </li>
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="pills-contact-tab23" data-bs-toggle="pill"
-                                        data-bs-target="#pills-contact23" type="button" role="tab"
-                                        aria-controls="pills-contact23" aria-selected="false">comment</button>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="pills-contact-tab239" data-bs-toggle="pill"
-                                        data-bs-target="#pills-contact239" type="button" role="tab"
-                                        aria-controls="pills-contact239" aria-selected="false">faqs</button>
-                                </li>
                             </ul>
                             <div class="tab-content" id="pills-tabContent4">
                                 <div class="tab-pane fade  show active " id="pills-home22" role="tabpanel"
@@ -276,59 +227,7 @@
                                     <div class="row">
                                         <div class="col-xl-12">
                                             <div class="wsus__description_area">
-                                                <h1>Heading</h1>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum
-                                                    sapiente aliquam ut neque voluptatibus inventore odit nesciunt.
-                                                    Nobis quas saepe repellat repudiandae qui sint? Delectus dignissimos
-                                                    maiores fuga doloremque magni, ratione provident exercitationem
-                                                    aliquam tempore velit facere autem magnam, architecto inventore
-                                                    recusandae dolorum, illo sequi officiis dolore! Unde enim,
-                                                    exercitationem. Lorem ipsum</p>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum
-                                                    sapiente aliquam ut neque voluptatibus inventore odit nesciunt.
-                                                    Nobis quas saepe repellat repudiandae qui sint? Delectus dignissimos
-                                                    maiores fuga doloremque magni, ratione provident exercitationem
-                                                    aliquam tempore velit facere autem magnam, architecto inventore
-                                                    recusandae dolorum, illo sequi officiis dolore! Unde enim,
-                                                    exercitationem. Lorem ipsum</p>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum
-                                                    sapiente aliquam ut neque voluptatibus inventore odit nesciunt.
-                                                    Nobis quas saepe repellat repudiandae qui sint? Delectus dignissimos
-                                                    maiores fuga doloremque magni, ratione provident exercitationem
-                                                    aliquam tempore velit facere autem magnam, architecto inventore
-                                                    recusandae dolorum, illo sequi officiis dolore! Unde enim,
-                                                    exercitationem. Lorem ipsum</p>
-                                                <ul>
-                                                    <li>Consectetur adipisicing elit. Voluptatum sapiente aliquam ut
-                                                        neque voluptatibus inventore odit nesciunt. Nobis quas saepe
-                                                        repellat</li>
-                                                    <li>Delectus dignissimos maiores fuga doloremque magni, ratione
-                                                        provident exercitationem aliquam tempore velit facere autem
-                                                        magnam</li>
-                                                    <li>velit facere autem magnam, architecto inventore recusandae
-                                                        dolorum, illo sequi officiis dolore! Unde enim</li>
-                                                    <li>Repudiandae qui sint? Delectus dignissimos maiores fuga
-                                                        doloremque magni, ratione provident exercitationem aliquam
-                                                        tempore velit facere autem</li>
-                                                    <li>Ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum
-                                                        sapiente aliquam ut neque voluptatibus inventore odit nesciunt.
-                                                        Nobis quas saepe repella</li>
-                                                </ul>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum
-                                                    sapiente aliquam ut neque voluptatibus inventore odit nesciunt.
-                                                    Nobis quas saepe repellat repudiandae qui sint? Delectus dignissimos
-                                                    maiores fuga doloremque magni, ratione provident exercitationem
-                                                    aliquam tempore velit facere autem magnam, architecto inventore
-                                                    recusandae dolorum, illo sequi officiis dolore! Unde enim,
-                                                    exercitationem. Lorem ipsum</p>
-                                                <h4>Heading 5</h4>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum
-                                                    sapiente aliquam ut neque voluptatibus inventore odit nesciunt.
-                                                    Nobis quas saepe repellat repudiandae qui sint? Delectus dignissimos
-                                                    maiores fuga doloremque magni, ratione provident exercitationem
-                                                    aliquam tempore velit facere autem magnam, architecto inventore
-                                                    recusandae dolorum, illo sequi officiis dolore! Unde enim,
-                                                    exercitationem. Lorem ipsum</p>
+                                                {!!$product->long_description!!}
                                             </div>
                                         </div>
                                         <div class="row">
@@ -394,12 +293,12 @@
                                         <div class="row">
                                             <div class="col-xl-6 col-xxl-5 col-md-6">
                                                 <div class="wsus__vebdor_img">
-                                                    <img src="images/slider_1.jpg" alt="vensor" class="img-fluid w-100">
+                                                    <img src="{{asset($product->vendor->banner)}}" alt="vensor" class="img-fluid w-100">
                                                 </div>
                                             </div>
                                             <div class="col-xl-6 col-xxl-7 col-md-6 mt-4 mt-md-0">
                                                 <div class="wsus__pro_det_vendor_text">
-                                                    <h4>jhon deo</h4>
+                                                    <h4>{{$product->vendor->shop_name}}</h4>
                                                     <p class="rating">
                                                         <i class="fas fa-star"></i>
                                                         <i class="fas fa-star"></i>
@@ -408,41 +307,16 @@
                                                         <i class="fas fa-star"></i>
                                                         <span>(41 review)</span>
                                                     </p>
-                                                    <p><span>Store Name:</span> OAIO Store</p>
-                                                    <p><span>Address:</span> Steven Street, El Carjon, CA 92020, United
-                                                        States (US)</p>
-                                                    <p><span>Phone:</span> 1234567890</p>
-                                                    <p><span>mail:</span> example@gmail.com</p>
-                                                    <a href="vendor_details.html" class="see_btn">visit store</a>
+                                                    <p><span>Store Name:</span> {{$product->vendor->shop_name}}</p>
+                                                    <p><span>Address:</span> {{$product->vendor->address}}</p>
+                                                    <p><span>Phone:</span> {{$product->vendor->phone}}</p>
+                                                    <p><span>mail:</span> {{$product->vendor->email}}</p>
+                                                    <a href="vendor_details.html" style="margin-top: 5px;" class="see_btn">visit store</a>
                                                 </div>
                                             </div>
                                             <div class="col-xl-12">
                                                 <div class="wsus__vendor_details">
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                                        eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                                        Venenatis tellus in metus vulputate eu scelerisque felis. Vel
-                                                        pretium lectus quam id leo in vitae turpis massa. Nunc id cursus
-                                                        metus aliquam. Libero id faucibus nisl tincidunt eget. Aliquam
-                                                        id
-                                                        diam maecenas ultricies mi eget mauris. Volutpat ac tincidunt
-                                                        vitae
-                                                        semper quis lectus. Vestibulum mattis ullamcorper velit sed. A
-                                                        arcu
-                                                        cursus vitae congue mauris.
-                                                        <span>A arcu cursus vitae congue mauris. Sagittis id consectetur
-                                                            purus ut. Tellus rutrum tellus pellentesque eu tincidunt
-                                                            tortor
-                                                            aliquam nulla. Diam in arcu cursus euismod quis. Eget sit
-                                                            amet
-                                                            tellus cras adipiscing enim eu. In fermentum et sollicitudin
-                                                            ac
-                                                            orci phasellus. A condimentum vitae sapien pellentesque
-                                                            habitant
-                                                            morbi tristique senectus et. In dictum non consectetur a
-                                                            erat.
-                                                            Nunc scelerisque viverra mauris in aliquam sem fringilla.
-                                                        </span>
-                                                    </p>
+                                                    {!!$product->vendor->description!!}
                                                 </div>
                                             </div>
                                         </div>
