@@ -815,7 +815,6 @@
             year: {{date('Y',strtotime($flashsales->end_date))}},
             month: {{date('m',strtotime($flashsales->end_date))}},
             day: {{date('d',strtotime($flashsales->end_date))}},
-            enableUtc: true
     });
     })
 </script>
