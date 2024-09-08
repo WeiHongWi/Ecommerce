@@ -93,6 +93,7 @@
   <script src="{{asset('frontend/js/venobox.min.js')}}"></script>
   <!--classycountdown js-->
   <script src="{{asset('frontend/js/jquery.classycountdown.js')}}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <!--main/custom js-->
   <script src="{{asset('frontend/js/main.js')}}"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
@@ -103,6 +104,61 @@
           @endforeach
       @endif
   </script>
-</body>
+  <script>
+    $(document).ready(function(){
+        /*$.ajaxSetup({
+            headers:{
+                {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}
+            }
+        });*/
 
+        $('body').on('click', '.delete-item',function(event){
+            event.preventDefault();
+
+            let deleteURL = $(this).attr('href');
+
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        data: {
+                            "_token": "{{ csrf_token() }}"
+                        },
+                        type: 'DELETE',
+                        url: deleteURL,
+                        headers:{'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                        success: function(data){
+                            if(data.status == 'success'){
+                                Swal.fire(
+                                    "Deleted!",
+                                    data.message
+                                );
+                            }else if(data.status == 'error'){
+                                Swal.fire(
+                                    "Can't delete it!",
+                                    data.message
+                                );
+                            }
+                            setTimeout(function() {
+                                window.location.reload();
+                            }, 3000);
+                        },
+                        error: function(xhr,status,error){
+                            console.log(error);
+                        }
+                    });
+                }
+               });
+        })
+    })
+  </script>
+  @stack('scripts')
+</body>
 </html>
