@@ -71,6 +71,9 @@
                 <li class="{{ setsidebarActive([
                     'admin.vendor.*',
                 ])}}"><a class="nav-link" href="{{route('admin.coupons.index')}}">Coupons</a></li>
+                <li class="{{ setsidebarActive([
+                    'admin.vendor.*',
+                ])}}"><a class="nav-link" href="{{route('admin.shipping-rule.index')}}">Shipping Rule</a></li>
               </ul>
             </li>
             <li><a class="nav-link" href="{{route('admin.general-setting.index')}}"><i class="far fa-square"></i> <span>Setting</span></a></li>
